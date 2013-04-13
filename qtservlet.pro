@@ -46,7 +46,6 @@ HEADERS += qservlet.h\
     servlets/paramtestservlet.h \
     pages/segments/htmlheader.h \
     pages/segments/htmlfooter.h \
-    pages/htmldoctypes.h \
     pages/tags/htmltag.h \
     pages/tags/metatag.h \
     pages/tags/scripttag.h \
