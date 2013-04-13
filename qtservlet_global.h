@@ -1,0 +1,12 @@
+#ifndef QTSERVLET_GLOBAL_H
+#define QTSERVLET_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(QTSERVLET_LIBRARY)
+#  define QTSERVLETSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define QTSERVLETSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // QTSERVLET_GLOBAL_H
