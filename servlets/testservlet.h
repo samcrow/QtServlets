@@ -1,8 +1,8 @@
 #ifndef TESTSERVLET_H
 #define TESTSERVLET_H
 
-#include "qtservlet_global.h"
-#include "qservlet.h"
+#include "../qtservlet_global.h"
+#include "../qservlet.h"
 
 class QTSERVLETSHARED_EXPORT TestServlet : public QServlet
 {

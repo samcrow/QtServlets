@@ -3,7 +3,7 @@
 #include <QBuffer>
 #include <QDebug>
 #include <QUrl>
-#include "error404servlet.h"
+#include "servlets/error404servlet.h"
 
 QHttpServletServer::QHttpServletServer(QObject *parent) :
     QObject(parent),
@@ -96,7 +96,6 @@ void QHttpServletServer::parseRequest(QByteArray& httpRequest, QString* path, QS
     //Use fromPercentEncoding() to convert %20 into space, etc.
     *path = QUrl::fromPercentEncoding(pathPlusParams[0]);
     
-    qDebug() << "De-percented path" << *path;
     
     //List has two parts if there is a pre-param and a post-param part
     if(pathPlusParams.length() > 1) {

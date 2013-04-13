@@ -1,7 +1,7 @@
 #ifndef ERROR404SERVLET_H
 #define ERROR404SERVLET_H
 
-#include "qservlet.h"
+#include "../qservlet.h"
 
 /**
  * @brief The Error404Servlet class provides a response that gives
