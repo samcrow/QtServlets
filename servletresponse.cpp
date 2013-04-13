@@ -1,23 +1,22 @@
 #include "servletresponse.h"
 #include <QDebug>
+#include <QBuffer>
 
-const QHash<int, QString> ServletResponse::statusCodes = ServletResponse::makeStatusCodeMap();
+const QHash<int, QByteArray> ServletResponse::statusCodes = ServletResponse::makeStatusCodeMap();
 
 ServletResponse::ServletResponse() :
-    QTextStream()
-{
-    QTextStream::setString(&body);
-    
+    QTextStream(&body)
+{   
     //Defaults: HTML and 200 OK
     setContentType("text/html");
     setStatusCode(200);
 }
 
-void ServletResponse::setResponseHeader(QString name, QString value) {
+void ServletResponse::setResponseHeader(QByteArray name, QByteArray value) {
     headers.insert(name, value);
 }
 
-void ServletResponse::setContentType(QString newType) {
+void ServletResponse::setContentType(QByteArray newType) {
     setResponseHeader("Content-Type", newType);
 }
 
@@ -28,16 +27,16 @@ QByteArray ServletResponse::getFullResponseText() {
     
     //Set the content length
     int contentLength = body.length();
-    setResponseHeader("Content-Length", QString::number(contentLength));
+    setResponseHeader("Content-Length", QByteArray::number(contentLength));
     
-    QString response;
+    QByteArray response;
     QTextStream stream(&response);
     
-    stream << "HTTP/1.1 " << QString::number(statusCode) << ' ' << statusCodes.value(statusCode) << "\r\n";
+    stream << "HTTP/1.1 " << QByteArray::number(statusCode) << ' ' << statusCodes.value(statusCode) << "\r\n";
     //Add the remaining headers
-    QList<QString> keys = headers.keys();
-    foreach(QString key, keys) {
-        QString value = headers[key];
+    QList<QByteArray> keys = headers.keys();
+    foreach(QByteArray key, keys) {
+        QByteArray value = headers[key];
         stream << key << ": " << value << "\r\n";
     }
     //Final \r\n before the body
@@ -46,14 +45,11 @@ QByteArray ServletResponse::getFullResponseText() {
     stream << body;
     
     stream.flush();
-    
-    QByteArray responseBytes = response.toUtf8();
-    
-    return responseBytes;
+    return response;
 }
 
-QHash<int, QString> ServletResponse::makeStatusCodeMap() {
-    QHash<int, QString> codes;
+QHash<int, QByteArray> ServletResponse::makeStatusCodeMap() {
+    QHash<int, QByteArray> codes;
     
     codes.insert(100, "Continue");
     codes.insert(101, "Switching Protocols");

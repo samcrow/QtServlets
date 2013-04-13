@@ -17,9 +17,9 @@ class QTSERVLETSHARED_EXPORT ServletResponse : public QTextStream
 public:
     ServletResponse();
     
-    void setResponseHeader(QString name, QString value);
+    void setResponseHeader(QByteArray name, QByteArray value);
     
-    void setContentType(QString newType);
+    void setContentType(QByteArray newType);
     
     void setStatusCode(int newCode);
     
@@ -38,20 +38,20 @@ public:
      *
      * This is initialized statically.
      */
-    static const QHash<int, QString> statusCodes;
+    static const QHash<int, QByteArray> statusCodes;
     
 private:
     
     /**
      * @brief The response body
      */
-    QString body;
+    QByteArray body;
     
     /**
      * @brief headers contains the set of HTTP response
      * headers to be send.
      */
-    QHash<QString, QString> headers;
+    QHash<QByteArray, QByteArray> headers;
     
     /**
      * @brief statusCode is the HTTP status code that will be sent
@@ -65,7 +65,7 @@ private:
      *
      * @return 
      */
-    static QHash<int, QString> makeStatusCodeMap();
+    static QHash<int, QByteArray> makeStatusCodeMap();
 };
 
 #endif // SERVLETRESPONSE_H

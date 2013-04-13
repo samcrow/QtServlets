@@ -107,7 +107,8 @@ void QHttpServletServer::parseRequest(QByteArray& httpRequest, QString* path, QS
             QByteArray key = keyAndValue[0];
             QByteArray value;
             if(keyAndValue.length() > 1) {
-                value = keyAndValue[1];
+                //De-percent-encode the parameter value
+                value = QUrl::fromPercentEncoding(keyAndValue[1]).toUtf8();
             } else {
                 value = "";
             }
