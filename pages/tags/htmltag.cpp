@@ -11,8 +11,9 @@ QByteArray HtmlTag::attr(QByteArray key) {
     return tagAttributes.value(key);
 }
 
-void HtmlTag::attr(QByteArray key, QByteArray value) {
+HtmlTag* HtmlTag::attr(QByteArray key, QByteArray value) {
     tagAttributes[key] = value;
+    return this;
 }
 
 bool HtmlTag::removeAttr(QByteArray key) {
@@ -92,7 +93,7 @@ QByteArray HtmlTag::formatTagText() {
     return text;
 }
 
-void HtmlTag::addClass(QByteArray newClass) {
+HtmlTag* HtmlTag::addClass(QByteArray newClass) {
     QByteArray currentClasses = attr("class");
     //Append a space if one doesn't exist at the end
     if(!currentClasses.endsWith(" ")) {
@@ -102,4 +103,6 @@ void HtmlTag::addClass(QByteArray newClass) {
     currentClasses += newClass;
     
     attr("class", currentClasses);
+    
+    return this;
 }

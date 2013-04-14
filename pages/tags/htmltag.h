@@ -5,7 +5,10 @@
 #include <QMap>
 
 /**
- * @brief The HtmlTag class represents an HTML tag
+ * @brief The HtmlTag class represents an HTML tag.
+ *
+ * Many functions return a pointer to this, so methods can be
+ * chained.
  */
 class HtmlTag : public QObject
 {
@@ -38,7 +41,7 @@ public:
      * @param key The name of the attribute to set
      * @param value The value to set
      */
-    void attr(QByteArray key, QByteArray value);
+    HtmlTag* attr(QByteArray key, QByteArray value);
     
     /**
      * @brief Removes an attribute from this element
@@ -58,7 +61,7 @@ public:
      * @brief Adds a class to this tag
      * @param newClass the class to add
      */
-    void addClass(QByteArray newClass);
+    HtmlTag* addClass(QByteArray newClass);
     
     /**
      * @brief Checks if this tag is allowed to have child tags.
