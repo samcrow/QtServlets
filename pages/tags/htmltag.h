@@ -52,7 +52,13 @@ public:
      * @brief Gets all the attributes of this tag
      * @return 
      */
-    QMap<QByteArray, QByteArray> getAllAttributes();
+    QMap<QByteArray, QByteArray>& getAllAttributes();
+    
+    /**
+     * @brief Adds a class to this tag
+     * @param newClass the class to add
+     */
+    void addClass(QByteArray newClass);
     
     /**
      * @brief Checks if this tag is allowed to have child tags.
@@ -79,7 +85,7 @@ public:
      * @brief Get the name of this tag
      * @return 
      */
-    QByteArray getTagName();
+    QByteArray& getTagName();
     
     /**
      * @brief Get all the children of this tag.
@@ -100,7 +106,7 @@ public:
      */
     virtual QByteArray formatTagText();
     
-private:
+protected:
     
     /**
      * @brief Every attribute of this element

@@ -29,7 +29,7 @@ bool HtmlTag::selfCloses() {
     return true;
 }
 
-QByteArray HtmlTag::getTagName() {
+QByteArray& HtmlTag::getTagName() {
     return tagName;
 }
 
@@ -41,7 +41,7 @@ int HtmlTag::getChildTagCount() {
     return 0;
 }
 
-QMap<QByteArray, QByteArray> HtmlTag::getAllAttributes() {
+QMap<QByteArray, QByteArray>& HtmlTag::getAllAttributes() {
     return tagAttributes;
 }
 
@@ -90,4 +90,16 @@ QByteArray HtmlTag::formatTagText() {
     
     stream.flush();
     return text;
+}
+
+void HtmlTag::addClass(QByteArray newClass) {
+    QByteArray currentClasses = attr("class");
+    //Append a space if one doesn't exist at the end
+    if(!currentClasses.endsWith(" ")) {
+        currentClasses += ' ';
+    }
+    //Append the new class
+    currentClasses += newClass;
+    
+    attr("class", currentClasses);
 }

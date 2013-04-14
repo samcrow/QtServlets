@@ -10,6 +10,7 @@ QList<HtmlTag *> ParentHtmlTag::getChildTags() {
 }
 
 void ParentHtmlTag::appendChildTag(HtmlTag *newChild) {
+    newChild->setParent(this);
     childTags.append(newChild);
 }
 

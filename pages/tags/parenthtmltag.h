@@ -16,7 +16,8 @@ public:
     QList<HtmlTag *> getChildTags();
     
     /**
-     * @brief Append a child of this element
+     * @brief Append a child of this element. This instance
+     * will take ownership of the child tag.
      * @param newChild
      */
     virtual void appendChildTag(HtmlTag* newChild);
