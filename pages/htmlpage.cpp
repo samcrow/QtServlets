@@ -20,6 +20,22 @@ QByteArray HtmlPage::formatTagText() {
     return text;
 }
 
+QByteArray HtmlPage::formatPageText() {
+    return formatTagText();
+}
+
 void HtmlPage::setPageTitle(QByteArray title) {
     head.setPageTitle(title);
+}
+
+void HtmlPage::appendToHead(HtmlTag *tag) {
+    head.appendChildTag(tag);
+}
+
+void HtmlPage::appendToBody(HtmlTag *tag) {
+    body.appendChildTag(tag);
+}
+
+void HtmlPage::appendToEnd(HtmlTag *tag) {
+    body.appendEndTag(tag);
 }

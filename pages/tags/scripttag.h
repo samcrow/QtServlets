@@ -23,6 +23,8 @@ public:
      */
     void setUsesTypeAttr(bool usesTypeAttr);
     
+    bool selfCloses();
+    
 signals:
     
 public slots:

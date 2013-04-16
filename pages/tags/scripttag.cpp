@@ -14,3 +14,7 @@ void ScriptTag::setUsesTypeAttr(bool usesTypeAttr) {
         removeAttr("type");
     }
 }
+
+bool ScriptTag::selfCloses() {
+    return false;
+}

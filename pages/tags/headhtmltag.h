@@ -30,8 +30,9 @@ public:
      * This function should not be used to set the page title. use setPageTitle() instead.
      *
      * @param newChild
+     * @return Returns this, for method chaining
      */
-    void appendChildTag(HtmlTag *newChild);
+    HeadHtmlTag* appendChildTag(HtmlTag *newChild);
     
     bool selfCloses();
     

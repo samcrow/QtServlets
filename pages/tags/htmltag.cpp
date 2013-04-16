@@ -96,7 +96,7 @@ QByteArray HtmlTag::formatTagText() {
 HtmlTag* HtmlTag::addClass(QByteArray newClass) {
     QByteArray currentClasses = attr("class");
     //Append a space if one doesn't exist at the end
-    if(!currentClasses.endsWith(" ")) {
+    if(!currentClasses.isEmpty() && !currentClasses.endsWith(" ")) {
         currentClasses += ' ';
     }
     //Append the new class

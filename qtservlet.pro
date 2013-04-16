@@ -23,8 +23,6 @@ SOURCES += qservlet.cpp \
     servlets/error404servlet.cpp \
     servlets/randomnumberservlet.cpp \
     servlets/paramtestservlet.cpp \
-    pages/segments/htmlheader.cpp \
-    pages/segments/htmlfooter.cpp \
     pages/tags/htmltag.cpp \
     pages/tags/metatag.cpp \
     pages/tags/scripttag.cpp \
@@ -34,7 +32,8 @@ SOURCES += qservlet.cpp \
     pages/tags/bodyhtmltag.cpp \
     pages/tags/titlehtmltag.cpp \
     pages/tags/metacharsethtmltag.cpp \
-    pages/tags/textnode.cpp
+    pages/tags/textnode.cpp \
+    pages/tags/divhtmltag.cpp
 
 HEADERS += qservlet.h\
         qtservlet_global.h \
@@ -44,8 +43,6 @@ HEADERS += qservlet.h\
     servlets/error404servlet.h \
     servlets/randomnumberservlet.h \
     servlets/paramtestservlet.h \
-    pages/segments/htmlheader.h \
-    pages/segments/htmlfooter.h \
     pages/tags/htmltag.h \
     pages/tags/metatag.h \
     pages/tags/scripttag.h \
@@ -55,7 +52,8 @@ HEADERS += qservlet.h\
     pages/tags/bodyhtmltag.h \
     pages/tags/titlehtmltag.h \
     pages/tags/metacharsethtmltag.h \
-    pages/tags/textnode.h
+    pages/tags/textnode.h \
+    pages/tags/divhtmltag.h
 
 unix:!symbian {
     maemo5 {

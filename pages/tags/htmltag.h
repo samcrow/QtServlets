@@ -64,6 +64,22 @@ public:
     HtmlTag* addClass(QByteArray newClass);
     
     /**
+     * @brief Wrap this tag in another tag, of type TagType, and return the new enclosing tag.
+     * 
+     * TagType must implement appendChildTag(HtmlTag*). This will usually be ParentHtmlTag or a subclass.
+     *
+     * @return Returns the newly created enclosing tag. This enclosing tag will be a child of the
+     * tag that it now encloses, until it is appended as a child of another tag.
+     */
+    template <class TagType> TagType* wrapped() {
+        TagType* enclosingTag = new TagType(this);
+        
+        enclosingTag->appendChildTag(this);
+        
+        return enclosingTag;
+    }
+    
+    /**
      * @brief Checks if this tag is allowed to have child tags.
      *
      * The default implementation returns false.

@@ -6,14 +6,6 @@
 BodyHtmlTag::BodyHtmlTag(QObject *parent) :
     ParentHtmlTag("body", parent)
 {
-    ParentHtmlTag* paragraph = new ParentHtmlTag("p", this);
-    paragraph->addClass("This")->addClass("is")->addClass("a")->addClass("paragraph")->attr("style", "font-weight: bold;");
-    
-    TextNode* tn = new TextNode(this);
-    tn->setText("This is a paragraph.");
-    paragraph->appendChildTag(tn);
-    
-    this->appendChildTag(paragraph);
 }
 
 bool BodyHtmlTag::selfCloses() {

@@ -19,8 +19,16 @@ public:
      * @brief Append a child of this element. This instance
      * will take ownership of the child tag.
      * @param newChild
+     * @return Returns this, for method chaining
      */
-    virtual void appendChildTag(HtmlTag* newChild);
+    virtual ParentHtmlTag* appendChildTag(HtmlTag* newChild);
+    
+    /**
+     * @brief Append text (in the form of a TextNode) to the content of this element
+     * @param text
+     * @return Returns this, for method chaining
+     */
+    ParentHtmlTag* appendText(QByteArray text);
     
     bool childrenAllowed();
     

@@ -7,18 +7,22 @@ TextNode::TextNode(QObject *parent) :
 {
 }
 
-void TextNode::setText(QString newText) {
+TextNode::TextNode(QByteArray text, QObject *parent) :
+    TextNode(parent)
+{
+    setText(text);
+}
+
+void TextNode::setText(QByteArray newText) {
     
-    QString processedText = newText.toHtmlEscaped();
+    QString processedText = QString(newText).toHtmlEscaped();
     //Replace newlines with <br />s
     static const QRegExp newlineRegex("[\n\r]+");
     processedText = processedText.replace(newlineRegex, "<br />");
     
-    text = processedText;
+    text = processedText.toUtf8();
 }
 
 QByteArray TextNode::formatTagText() {
-    QByteArray utf8 = text.toUtf8();
-    
-    return utf8;
+    return text;
 }

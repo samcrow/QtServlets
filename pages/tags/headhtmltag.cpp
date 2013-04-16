@@ -10,7 +10,7 @@ HeadHtmlTag::HeadHtmlTag(QObject *parent) :
     appendChildTag(new MetaCharsetHtmlTag("UTF-8", this));
 }
 
-void HeadHtmlTag::appendChildTag(HtmlTag *newChild) {
+HeadHtmlTag* HeadHtmlTag::appendChildTag(HtmlTag *newChild) {
     QByteArray newTagName = newChild->getTagName();
     if(newTagName == "base"
             || newTagName == "link" || newTagName == "style"
@@ -22,6 +22,7 @@ void HeadHtmlTag::appendChildTag(HtmlTag *newChild) {
     else {
         qWarning() << "Tag of type" << newTagName << "is not allowed inside a head element";
     }
+    return this;
 }
 
 void HeadHtmlTag::setPageTitle(QByteArray title) {

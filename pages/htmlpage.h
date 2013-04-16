@@ -17,10 +17,37 @@ public:
     QByteArray formatTagText();
     
     /**
+     * @brief Formats and returns the HTML source code of the page
+     * (equivalent to formatTagText() ).
+     * @return 
+     */
+    QByteArray formatPageText();
+    
+    /**
      * @brief Set the title of the page
      * @param title
      */
     void setPageTitle(QByteArray title);
+    
+    /**
+     * @brief Append a node to the head of the page
+     * @param tag
+     */
+    void appendToHead(HtmlTag* tag);
+    
+    /**
+     * @brief Append a node to the body of the page
+     * @param tag
+     */
+    void appendToBody(HtmlTag* tag);
+    
+    /**
+     * @brief Append a node to the end of the body,
+     * just before the &lt;body&gt; tag. This is useful
+     * for JavaScript includes.
+     * @param tag
+     */
+    void appendToEnd(HtmlTag* tag);
     
 private:
     
